@@ -16,7 +16,7 @@ export default function ApiCallsProvider( {children}: any) {
 
             const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}v2/cursus/9/cursus_users?filter[campus_id]=16&filter[end_at]=2024-07-20T08:37:00.000Z&sort=-level`, {
                 headers: {
-                    Authorization: `Bearer ee118d4088001c001895f1ccaf6d32ff968bb7f074a1d91650b7604b249eea67`
+                    Authorization: `Bearer [REDACTED]`
                 }
             })
 
@@ -34,7 +34,7 @@ export default function ApiCallsProvider( {children}: any) {
 
             const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}v2/users/${id}`, {
                 headers: {
-                    Authorization: `Bearer ee118d4088001c001895f1ccaf6d32ff968bb7f074a1d91650b7604b249eea67`
+                    Authorization: `Bearer [REDACTED]`
                 }
             })
 
