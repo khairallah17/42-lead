@@ -54,7 +54,11 @@ const config = {
         },
         themed: {
           DEFAULT: "#edf2f4",
-          secondary: "#ef233c"
+          secondary: "#ef233c",
+          bg: {
+            DEFAULT: "#20232C",
+            secondary: "#1A1D24",
+          }
         }
       },
       borderRadius: {

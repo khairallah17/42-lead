@@ -12,7 +12,7 @@ export default function SearchInput() {
     const setState = (e: ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)
 
     return (
-        <Input placeholder="enter login" value={searchQuery} onChange={setState} />
+        <Input placeholder="enter login" className="bg-themed-bg-secondary text-white border-none focus-visible:!ring-0 outline-none" value={searchQuery} onChange={setState} />
     )
 
 }

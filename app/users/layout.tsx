@@ -18,7 +18,7 @@ export default function RootLayout({
     return (
         <QueryClientProvider client={queryClient}>
           <ApiCallsProvider>
-              <main className="container mx-auto">
+              <main className="container mx-auto max-h-screen h-screen items-center justify-center">
                   {children}
               </main>
             </ApiCallsProvider>

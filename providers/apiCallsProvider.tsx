@@ -12,9 +12,11 @@ export default function ApiCallsProvider( {children}: any) {
         
         try {
 
-            const { data } = await axios.get(`${process.env.API_URL}v2/cursus/9/cursus_users?filter[campus_id]=16&page[size]=100&filter[end_at]=2024-07-20T08:37:00.000Z&sort[level]=desc`, {
+            console.log(process.env.NEXT_PUBLIC_API_URL)
+
+            const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}v2/cursus/9/cursus_users?filter[campus_id]=16&filter[end_at]=2024-07-20T08:37:00.000Z&sort=-level`, {
                 headers: {
-                    Authorization: `Bearer 54738de6ef016ca2d3c86c10787f7f78034f124513816f74543b0e92392b8da1`
+                    Authorization: `Bearer ee118d4088001c001895f1ccaf6d32ff968bb7f074a1d91650b7604b249eea67`
                 }
             })
 
@@ -30,9 +32,9 @@ export default function ApiCallsProvider( {children}: any) {
 
         try {
 
-            const { data } = await axios.get(`${process.env.API_URL}v2/users/${id}`, {
+            const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}v2/users/${id}`, {
                 headers: {
-                    Authorization: `Bearer 54738de6ef016ca2d3c86c10787f7f78034f124513816f74543b0e92392b8da1`
+                    Authorization: `Bearer ee118d4088001c001895f1ccaf6d32ff968bb7f074a1d91650b7604b249eea67`
                 }
             })
 

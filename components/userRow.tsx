@@ -5,15 +5,33 @@ import Image from 'next/image'
 import { Progress } from './ui/progress'
 
 interface IUserRow {
-    user: TUser
+    user: TUser,
+    index: number
 }
 
-const UserRow = ({ user }: IUserRow) => {
+const UserRow = ({ user, index }: IUserRow) => {
+
+    const image = ["/first.png","/second.png","/third.png"]
 
     return (
-    <Card
-        className='p-5 flex items-center gap-6'
+    <div
+        className={`p-5 flex items-center gap-6 hover:bg-[#343A46] duration-200 rounded-xl`}
     >
+        <div className='w-1/12 flex items-center content-center flex-col'>
+            {
+                image[index] ? (
+                    <Image
+                        height={60}
+                        width={60}
+                        alt=''
+                        className=''
+                        src={image[index]}
+                    />
+                ) : (
+                    <p className='text-white text-center'>{index + 1}</p>  
+                )
+            }
+        </div>
         <Image
             src={ user.user.image.versions.large ||  "/jeffy.png"}
             alt=''
@@ -22,14 +40,14 @@ const UserRow = ({ user }: IUserRow) => {
             className='rounded-full aspect-square'
         />
         <div className='w-full'>
-            <h1 className='text-xl font-semibold text-themed-secondary'>{user.user.displayname}</h1>
-            <p className=''>{user.user.login}</p>
+            <h1 className='text-xl font-semibold capitalize text-white'>{user.user.displayname}</h1>
+            <p className='text-white'>{user.user.login}</p>
             <div className='relative'>
-                <Progress value={user.level} color={"#ef233c"} className='h-[22px]' />
-                <p className='absolute top-1 left-1/2 text-themed-secondary text-xs z-50'>{user.level}</p>
+                <Progress value={(user.level % 1) * 100} color={"#ef233c"} className='h-[22px]' />
+                <p className='absolute top-1 left-1/2 text-white text-xs z-50'>{user.level}</p>
             </div>
         </div>
-    </Card>
+    </div>
   )
 }
 
