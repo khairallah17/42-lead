@@ -3,6 +3,7 @@ import { TUser } from '@/types/index'
 import { Card } from './ui/card'
 import Image from 'next/image'
 import { Progress } from './ui/progress'
+import { Badge } from './ui/badge'
 
 interface IUserRow {
     user: TUser,
@@ -39,12 +40,17 @@ const UserRow = ({ user, index }: IUserRow) => {
             height={64}
             className='rounded-full aspect-square'
         />
-        <div className='w-full'>
-            <h1 className='text-xl font-semibold capitalize text-white'>{user.user.displayname}</h1>
+        <div className='w-full space-y-1'>
+            <div className='flex items-center justify-between w-full'>
+                <h1 className='text-xl font-semibold capitalize text-white'>{user.user.displayname}</h1>
+                {
+                    user.redundant && <Badge>second pool</Badge>
+                }
+            </div>
             <p className='text-white'>{user.user.login}</p>
             <div className='relative'>
-                <Progress value={(user.level % 1) * 100} color={"#ef233c"} className='h-[22px]' />
-                <p className='absolute top-1 left-1/2 text-white text-xs z-50'>{user.level}</p>
+                <Progress value={((user.level % 1) * 100)} color={"#ef233c"} className='h-[22px]' />
+                <p className={`absolute top-1 left-[45%] ${(user.level % 1 * 100) > 50 ? "text-white" : ""} text-xs z-50`}>{user.level.toFixed(2)}</p>
             </div>
         </div>
     </div>

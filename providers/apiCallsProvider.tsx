@@ -20,6 +20,10 @@ export default function ApiCallsProvider( {children}: any) {
                 }
             })
 
+            console.log(data)
+
+            redundantPooler(data)
+
             return data
 
         } catch (error) {
@@ -46,11 +50,22 @@ export default function ApiCallsProvider( {children}: any) {
 
     }
 
+    const redundantPooler = (users: TUser[]) => {
+
+        const res = users.filter(item => {
+            if (item.user.login.slice(0, 2) == item.user.displayname.slice(0, 2).toLocaleLowerCase())
+                item.redundant = true
+            else
+                item.redundant = false
+        })
+    }
+
     const values = {
         getUsers,
         searchQuery, setSearchQuery,
         getUserById,
-        user, setUser
+        user, setUser,
+        redundantPooler
     }
 
     return (
